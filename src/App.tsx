@@ -3,7 +3,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
-import { increment } from './store/slices/counter';
+import { decrement, increment, incrementBy } from './store/slices/counter';
 
 function App() {
   const { counter } = useSelector((state: RootState) => state.counter);
@@ -22,8 +22,8 @@ function App() {
       <h1>Count is {counter}</h1>
       <div className="card">
         <button onClick={() => dispatch(increment())}>Increment</button>
-        <button onClick={() => dispatch(increment())}>Decrement</button>
-        <button onClick={() => dispatch(increment())}>Increment by 2</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
+        <button onClick={() => dispatch(incrementBy(2))}>Increment by 2</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
