@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getPokemons } from './thunks';
+import { getPokemons, nextPage } from './thunks';
 
 interface Pokemons {
   name: string;
@@ -36,6 +36,9 @@ export const pokemonSlice = createSlice({
     // },
   },
   extraReducers: (builder) => {
+    builder.addCase(nextPage, (state, { payload }) => {
+      state.page += payload;
+    });
     builder.addCase(getPokemons.pending, (state) => {
       state.isLoading = true;
     });
